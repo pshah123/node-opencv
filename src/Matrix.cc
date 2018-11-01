@@ -304,6 +304,15 @@ NAN_METHOD(Matrix::Pixel) {
           (uchar) objColor->Get(1)->IntegerValue();
       self->mat.at<cv::Vec3b>(y, x)[2] =
           (uchar) objColor->Get(2)->IntegerValue();
+    } else if (self->mat.channels() == 4) {
+      self->mat.at<cv::Vec4b>(y, x)[0] =
+          (uchar) objColor->Get(0)->IntegerValue();
+      self->mat.at<cv::Vec4b>(y, x)[1] =
+          (uchar) objColor->Get(1)->IntegerValue();
+      self->mat.at<cv::Vec4b>(y, x)[2] =
+          (uchar) objColor->Get(2)->IntegerValue();
+      self->mat.at<cv::Vec4b>(y, x)[3] =
+          (uchar) objColor->Get(3)->IntegerValue();
     } else if (self->mat.channels() == 1)
       self->mat.at<uchar>(y, x) = (uchar) objColor->Get(0)->IntegerValue();
 
