@@ -384,12 +384,14 @@ NAN_METHOD(Matrix::Set) {
         self->mat.at<cv::Vec3f>(i, j)[0] = (uchar) (vint >> 16) & 0xff;
         self->mat.at<cv::Vec3f>(i, j)[1] = (uchar) (vint >> 8) & 0xff;
         self->mat.at<cv::Vec3f>(i, j)[2] = (uchar) (vint) & 0xff;
-        // printf("!!!i %x, %x, %x", (vint >> 16) & 0xff, (vint >> 8) & 0xff, (vint) & 0xff);
+        printf("!!!i %x, %x, %x", (vint >> 16) & 0xff, (vint >> 8) & 0xff, (vint) & 0xff);
         break;
       case CV_32FC1:
         self->mat.at<float>(i, j) = val;
+        printf("CV type 2");
         break;
       default:
+        printf("CV type unk");
         self->mat.at<double>(i, j) = val;
     }
 
